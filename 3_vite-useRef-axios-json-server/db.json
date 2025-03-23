@@ -1,0 +1,92 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Abdullah",
+      "lastName": "Aydın",
+      "email": "abdullah.aydın@example.com",
+      "phone": "+905321234567",
+      "address": "İstanbul, Türkiye"
+    },
+    {
+      "id": 2,
+      "firstName": "Didem",
+      "lastName": "Gedik",
+      "email": "didem.gedik@example.com",
+      "phone": "+905446563345",
+      "address": "Antalya, Türkiye"
+    },
+    {
+      "id": 3,
+      "firstName": "Zeynep",
+      "lastName": "Demir",
+      "email": "zeynep.demir@example.com",
+      "phone": "+905543456789",
+      "address": "İzmir, Türkiye"
+    },
+    {
+      "id": 4,
+      "firstName": "Elif",
+      "lastName": "Çelik",
+      "email": "elif.celik@example.com",
+      "phone": "+905554567890",
+      "address": "Bursa, Türkiye"
+    },
+    {
+      "id": 5,
+      "firstName": "Emre",
+      "lastName": "Şahin",
+      "email": "emre.sahin@example.com",
+      "phone": "+905665678901",
+      "address": "Antalya, Türkiye"
+    },
+    {
+      "id": 6,
+      "firstName": "Merve",
+      "lastName": "Öztürk",
+      "email": "merve.ozturk@example.com",
+      "phone": "+905776789012",
+      "address": "Konya, Türkiye"
+    },
+    {
+      "id": 7,
+      "firstName": "Burak",
+      "lastName": "Aydın",
+      "email": "burak.aydin@example.com",
+      "phone": "+905887890123",
+      "address": "Adana, Türkiye"
+    },
+    {
+      "id": 8,
+      "firstName": "Ayşe",
+      "lastName": "Güneş",
+      "email": "ayse.gunes@example.com",
+      "phone": "+905998901234",
+      "address": "Gaziantep, Türkiye"
+    },
+    {
+      "id": 9,
+      "firstName": "Mustafa",
+      "lastName": "Koç",
+      "email": "mustafa.koc@example.com",
+      "phone": "+905109012345",
+      "address": "Eskişehir, Türkiye"
+    },
+    {
+      "id": 10,
+      "firstName": "Fatma",
+      "lastName": "Erdoğan",
+      "email": "fatma.erdogan@example.com",
+      "phone": "+905211123456",
+      "address": "Samsun, Türkiye"
+    },
+    {
+      "id": 11,
+      "firstName": "Rümeysa",
+      "lastName": "Baysal",
+      "email": "rümeysa.baysal@example.com",
+      "phone": "+905454567960",
+      "address": "İstanbul, Türkiye"
+    }
+  ]
+}
