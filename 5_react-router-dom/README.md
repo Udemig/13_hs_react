@@ -34,3 +34,7 @@ ii. element ==> path değerine karşılık gelen bileşendir.
 # useSearchParams
 
 - React router dom içerisinde url'deki parametreleri yönetmek için useSearchParams hook'u kullanılır.Kullanımı ise useState'e benzerdir.useSearchParams import edilir.Sonrasında bu hook bir değişkene atanır.Devamında get ile url'den parametre alınır set ile parametre url'e set edilir.
+
+# useNavigate:
+
+- Link veya NavLink etiketlerinin fonksiyon halidir.Belirli bir durumda başka sayfaya yönlendirme yapmak için kullanılır.[Ör: Eğer aratılan sonuç bulunamadıysa notFound sayfasına yönlendir]

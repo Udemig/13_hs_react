@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import api from "../utils/api";
 import Card from "../components/Card";
 import Filter from "../components/Filter";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Products = () => {
+  // useNavigate Kurulumu
+  const navigate = useNavigate();
   // * State Kurulumu
   const [books, setState] = useState([]);
 
@@ -21,13 +23,25 @@ const Products = () => {
 
   // Bileşen ekrana geldiğinde ve searchParams her değiştiğinde api isteği at
   useEffect(() => {
-    api.get("/books", { params }).then((res) => setState(res.data));
+    api.get("/books", { params }).then((res) => {
+      if (res.data.length === 0) {
+        // Eğer kitap yoksa notFound sayfasına yönlendir
+        navigate("/notfound");
+      }
+      // Eğer kitap'ların uzunluğu sıfırdan farklıysa kitapları setState ile state'e aktar
+      setState(res.data);
+    });
   }, [searchParams]);
 
   return (
     <div className="container my-5">
       {/* Results */}
-      <h2>{books.length} kitap bulundu</h2>
+
+      {books.length === 0 ? (
+        <h2>Kitap Bulunamadı</h2>
+      ) : (
+        <h2>{books.length} kitap bulundu</h2>
+      )}
 
       {/* Filter */}
       <Filter />
