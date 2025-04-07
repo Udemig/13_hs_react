@@ -7,12 +7,15 @@ import { UserProvider } from "./context/userContext.jsx";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { ProductProvider } from "./context/productContext.jsx";
+import { BasketProvider } from "./context/basketContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <ProductProvider>
-    <StrictMode>
-      <ToastContainer />
-      <App />
-    </StrictMode>
-  </ProductProvider>
+  <BasketProvider>
+    <ProductProvider>
+      <StrictMode>
+        <ToastContainer />
+        <App />
+      </StrictMode>
+    </ProductProvider>
+  </BasketProvider>
 );

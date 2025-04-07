@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { BasketContext } from "../../context/basketContext";
 
-const Card = () => {
+const Card = ({ product }) => {
+  const { addToBasket } = useContext(BasketContext);
+
   return (
-    <div className="card py-2">
+    <div className="card py-2 d-flex flex-column gap-5">
       <div className="d-flex justify-content-center">
-        <img
-          src="https://picsum.photos/200"
-          className="img-fluid rounded object-fit-contain"
-          alt=""
-        />
+        <img src={product.image} height={120} alt="" />
       </div>
 
       <div className="card-body">
-        <h4>Title</h4>
-        <h5>Category</h5>
-        <button>Add to basket</button>
+        <h4 className="text-truncate">{product.title} </h4>
+        <h5 className="text-secondary">{product.category}</h5>
+        <button
+          onClick={() => addToBasket(product)}
+          className="btn btn-primary w-100 mt-2"
+        >
+          Add to basket
+        </button>
       </div>
     </div>
   );
