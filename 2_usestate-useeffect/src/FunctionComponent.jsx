@@ -16,7 +16,7 @@ const FunctionComponent = () => {
 
   // componentDidUnmount ==> Bir bileşenin ekrandan kaldırılması
   useEffect(() => {
-    // !
+    // ! Timer'ların sıfırlanması durumunda kullanılır
     return console.log(`Function Component ekrandan gitti ❌ `);
   }, []);
   return (

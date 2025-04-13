@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import api from "../../utils/api";
 import ReactPlayer from "react-player";
 import ChannelInfo from "../../components/ChannelInfo";
+import Description from "../../components/Description";
 const Detail = () => {
   // Url deki arama parametrelerine eriş
   const [searchParams] = useSearchParams();
@@ -56,9 +57,10 @@ const Detail = () => {
               {/* Channel Info  */}
               <ChannelInfo video={video} />
               {/* Description  */}
-              <h1>Description</h1>
+              <Description video={video} />
 
               {/* Comments  */}
+
               <h1>Comments</h1>
             </div>
           </div>

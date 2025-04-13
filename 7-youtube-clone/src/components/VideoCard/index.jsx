@@ -29,11 +29,13 @@ const VideoCard = ({ video }) => {
 
       {/* Info Area */}
       <div className="mt-3 flex gap-3">
-        <img
-          src={video.channelThumbnail[0].url}
-          className="size-14 rounded-full mt-2"
-          alt="channel-picture"
-        />
+        {video?.channelThumbnail?.[0]?.url && (
+          <img
+            src={video.channelThumbnail[0].url}
+            className="size-14 rounded-full pp"
+            alt="chanel-pic"
+          />
+        )}
 
         <div>
           <p className="font-bold line-clamp-1 mt-2">{video.title}</p>

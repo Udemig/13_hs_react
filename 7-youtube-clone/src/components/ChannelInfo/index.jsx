@@ -1,3 +1,4 @@
+import millify from "millify";
 import React from "react";
 import { AiFillDislike, AiFillLike } from "react-icons/ai";
 
@@ -27,7 +28,7 @@ const ChannelInfo = ({ video }) => {
       <div className="flex items-center bg-[#3e403f] cursor-pointer max-sm:mt-3 max-sm:w-fit rounded-full">
         <div className="flex py-1 px-3 sm:py-2 sm:px-4 items-center gap-2 font-bold border-r border-gray-500">
           <AiFillLike />
-          <span>1000</span>
+          <span>{millify(video.likeCount)}</span>
         </div>
         <div className="py-1 px-3 sm:py-2 sm:px-4">
           <AiFillDislike />

@@ -39,7 +39,7 @@
 
 2. POST:
 
-- Client'dan server'a veri göndermek için kullanılır.Serve'a gönderilecek veri isteğin body'sine iliştirilmelidir.
+- Client'dan server'a veri göndermek için kullanılır.Server'a gönderilecek veri isteğin body'sine iliştirilmelidir.
 
 3. PUT:
 
