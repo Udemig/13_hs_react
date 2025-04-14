@@ -4,6 +4,10 @@ import api from "../../utils/api";
 import ReactPlayer from "react-player";
 import ChannelInfo from "../../components/ChannelInfo";
 import Description from "../../components/Description";
+import Comments from "../../components/Comments";
+import VideoCard from "../../components/VideoCard";
+import { BasicLoader } from "../../components/Loader";
+import Error from "../../components/Error";
 const Detail = () => {
   // Url deki arama parametrelerine eriş
   const [searchParams] = useSearchParams();
@@ -24,16 +28,14 @@ const Detail = () => {
       .then((res) => setVideo(res.data))
       .catch((err) => setError(err.message))
       .finally(() => setIsLoading(false));
-  }, []);
-
-  console.log(video);
+  }, [id]);
 
   return (
     <div>
       {isLoading ? (
-        <h1>Loading</h1>
+        <BasicLoader />
       ) : error ? (
-        <h1>Hataaa</h1>
+        <Error info={error} />
       ) : (
         <div className="page-content">
           {/* Video  */}
@@ -60,14 +62,15 @@ const Detail = () => {
               <Description video={video} />
 
               {/* Comments  */}
-
-              <h1>Comments</h1>
+              <Comments videoId={id} />
             </div>
           </div>
 
           {/* Related Videos  */}
           <div>
-            <h1>Related</h1>
+            {video?.relatedVideos.data.map((i, key) => (
+              <VideoCard key={key} video={i} isRow />
+            ))}
           </div>
         </div>
       )}

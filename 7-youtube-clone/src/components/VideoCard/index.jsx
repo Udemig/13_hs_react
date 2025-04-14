@@ -2,19 +2,21 @@ import millify from "millify";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const VideoCard = ({ video }) => {
-  console.log(video);
+const VideoCard = ({ video, isRow }) => {
   const [isHover, setIsHover] = useState(false);
 
+  // thumbnail dizisi içerisinde eleman varsa bunu al ve -1'dekinin url'ini kullan
   const thumbnail =
-    isHover && video.richThumbnail
-      ? video.richThumbnail[video.richThumbnail?.length - 1].url
-      : video.thumbnail[video.thumbnail?.length - 1].url;
+    isHover && video?.richThumbnail?.length
+      ? video.richThumbnail.at(1)?.url
+      : video?.thumbnail?.length
+      ? video.thumbnail.at(1)?.url
+      : null;
 
   return (
     <Link
       to={`/watch?v=${video.videoId}`}
-      className="cursor-pointer"
+      className={`cursor-pointer ${isRow && "row mt-4"}`}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
@@ -28,21 +30,25 @@ const VideoCard = ({ video }) => {
       </div>
 
       {/* Info Area */}
-      <div className="mt-3 flex gap-3">
+      <div className={`${!isRow && "mt-4"} "flex gap-3"`}>
         {video?.channelThumbnail?.[0]?.url && (
           <img
             src={video.channelThumbnail[0].url}
             className="size-14 rounded-full pp"
-            alt="chanel-pic"
+            alt="chanel-pic pp"
           />
         )}
 
         <div>
           <p className="font-bold line-clamp-1 mt-2">{video.title}</p>
-          <p>{video.channelTitle}</p>
+          <p className="channel-title">{video.channelTitle}</p>
 
           <div className="flex gap-3 items-center mt-2">
-            <p>{millify(video.viewCount)} Görüntülenme</p> *
+            <p>
+              {millify(Number(video.viewCount))}
+              <span className="view">Görüntülenme</span>
+            </p>
+            *
             {video.isLive ? (
               <p className="bg-red-500 py-0.5 px-2 rounded-lg">Canlı</p>
             ) : (

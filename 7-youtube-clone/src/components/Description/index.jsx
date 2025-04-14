@@ -5,7 +5,9 @@ import React, { useState } from "react";
 const Description = ({ video }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const text = isOpen ? video.description : video.description.slice(0, 100);
+  const text = isOpen
+    ? video.description
+    : video.description.slice(0, 100) + "... daha fazla";
   return (
     <div
       onClick={() => setIsOpen(!isOpen)}

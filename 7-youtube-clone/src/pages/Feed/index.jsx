@@ -3,6 +3,8 @@ import Sidebar from "../../components/Sidebar";
 import { useSearchParams } from "react-router-dom";
 import api from "../../utils/api";
 import VideoCard from "../../components/VideoCard";
+import { SkeletonLoader } from "../../components/Loader";
+import Error from "../../components/Error";
 
 const Feed = () => {
   // State kurulumları
@@ -41,9 +43,9 @@ const Feed = () => {
       <div className="videos ">
         {/* isLoading ise yükleniyor hata varsa hata bunların hiçbiri değilse videoları maple */}
         {isLoading ? (
-          <h1>Yükleniyorrr</h1>
+          <SkeletonLoader />
         ) : error ? (
-          <h1>Hataaaa</h1>
+          <Error info={error} />
         ) : (
           videos.map((video, key) => <VideoCard key={key} video={video} />)
         )}

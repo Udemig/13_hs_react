@@ -38,3 +38,28 @@ body {
     padding: 30px 20px;
   }
 }
+
+.row {
+  display: grid;
+  grid-template-columns: 168px auto;
+  gap: 20px;
+}
+
+.row .channel-title,
+.row .pp,
+.row .view {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .row {
+    grid-template-columns: 1fr 3fr;
+  }
+}
+
+.loader-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
