@@ -1,6 +1,7 @@
 import React from "react";
+import { toast } from "react-toastify";
 
-const Modal = ({ updateItem, dispatch }) => {
+const Modal = ({ updateItem, dispatch, setIsShow }) => {
   // Form gönderildiğinde çalışacak fonksiyon
   const handleSubmit = (e) => {
     // Sayfa yenilemesini engelle
@@ -9,8 +10,13 @@ const Modal = ({ updateItem, dispatch }) => {
     const text = e.target[0].value;
 
     // Reducer'a haber gönder
-
     dispatch({ type: "UPDATE", payload: { id: updateItem.id, text } });
+
+    // Modal Kapat
+    setIsShow(false);
+
+    // Bildirim gönder
+    toast.success("Todo başarıyla güncellendi");
   };
   return (
     <div className="custom-modal-backdrop">

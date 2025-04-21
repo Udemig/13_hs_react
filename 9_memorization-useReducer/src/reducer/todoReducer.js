@@ -15,7 +15,13 @@ const todoReducer = (state, action) => {
 
     // Güncelleme
     case "UPDATE":
-      return state;
+      // Güncellencek elemanı todos dizisi içerisinde bul ve değerini güncelle
+      const updatedTodos = state.todos.map((todo) =>
+        todo.id === action.payload.id
+          ? { ...todo, text: action.payload.text }
+          : todo
+      );
+      return { ...state, todos: updatedTodos };
 
     // Silme
     case "DELETE":

@@ -88,7 +88,13 @@ const Todo = () => {
         ))}
       </ul>
 
-      {isShow && <Modal updateItem={updateItem} dispatch={dispatch} />}
+      {isShow && (
+        <Modal
+          updateItem={updateItem}
+          dispatch={dispatch}
+          setIsShow={setIsShow}
+        />
+      )}
     </div>
   );
 };
