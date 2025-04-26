@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Modal from "../Modal";
+import api from "../../utils";
+import actionTypes from "../../redux/actionTypes/actionTypes";
+import { deleteTodo, toggleTodo } from "../../redux/actions/todoActions";
 
 const Card = ({ todo }) => {
   // Todo içerisindeki createdAt değerini formatla
@@ -22,18 +25,53 @@ const Card = ({ todo }) => {
 
     // Eğer silme işlemi kullanıcı tarafından onaylanırsa
     if (res) {
-      //Silinecek elemanın id'sini reducer'a ilet
-      dispatch({ type: "DELETE_TODO", payload: todo.id });
+      // api
+      //   .delete(`/todos/${todo.id}`)
+      //   .then(() => {
+      //     //Silinecek elemanın id'sini reducer'a ilet
+      //     dispatch({ type: actionTypes.delete, payload: todo.id });
 
-      // Kullanıcıya bildirim gönder
-      toast.error("Eleman silindi");
+      //     // Kullanıcıya bildirim gönder
+      //     toast.success("Eleman silindi");
+      //   })
+      //   .catch((err) => {
+      //     toast.error(`Eleman silinirken bir hata oluştu: ${err.message} `);
+      //   });
+      api
+        .delete(`/todos/${todo.id}`)
+        .then(() => {
+          //Silinecek elemanın id'sini reducer'a ilet
+          dispatch(deleteTodo(todo.id));
+
+          // Kullanıcıya bildirim gönder
+          toast.success("Eleman silindi");
+        })
+        .catch((err) => {
+          toast.error(`Eleman silinirken bir hata oluştu: ${err.message} `);
+        });
     }
   };
 
   // Status değiştiren fonksiyon
   const handleStatus = () => {
-    // Reducer'a status değeri değişecek elemanı iletsin
-    dispatch({ type: "TOGGLE_TODO", payload: todo.id });
+    // api
+    //   .patch(`/todos/${todo.id}`, { is_done: !todo.is_done })
+    //   .then(() => {
+    //     // Reducer'a status değeri değişecek elemanı iletsin
+    //     dispatch({ type: actionTypes.toggle, payload: todo.id });
+    //   })
+    //   .catch((err) => {
+    //     toast.error(`Güncelleme sırasında bir hata oluştu:${err.message} `);
+    //   });
+    api
+      .patch(`/todos/${todo.id}`, { is_done: !todo.is_done })
+      .then(() => {
+        // Reducer'a status değeri değişecek elemanı iletsin
+        dispatch(toggleTodo(todo.id));
+      })
+      .catch((err) => {
+        toast.error(`Güncelleme sırasında bir hata oluştu:${err.message} `);
+      });
   };
 
   // Düzenleme yapan fonksiyon

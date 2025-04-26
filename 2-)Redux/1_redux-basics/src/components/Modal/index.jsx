@@ -1,5 +1,8 @@
 import React from "react";
 import { toast } from "react-toastify";
+import api from "../../utils";
+import actionTypes from "../../redux/actionTypes/actionTypes";
+import { updateTodo } from "../../redux/actions/todoActions";
 
 const Modal = ({ onClose, todo, dispatch }) => {
   const handleSubmit = (e) => {
@@ -13,14 +16,37 @@ const Modal = ({ onClose, todo, dispatch }) => {
       ...todo,
       text: newText,
     };
-    // Reducer'a güncellencek veriyi ilet
-    dispatch({ type: "UPDATE_TODO", payload: updatedTodo });
+    // api
+    //   .put(`/todos/${todo.id}`, updatedTodo)
+    //   .then(() => {
+    //     // Reducer'a güncellencek veriyi ilet
+    //     dispatch({ type: actionTypes.update, payload: updatedTodo });
+    //     // Bildirim gönder
+    //     toast.success("Eleman başarıyla güncellendi");
+    //   })
+    //   .catch((err) => {
+    //     // Bildirim gönder
+    //     toast.success(
+    //       `Eleman güncelleneriken bir hata oluştu:  ${err.message}`
+    //     );
+    //   });
+    api
+      .put(`/todos/${todo.id}`, updatedTodo)
+      .then(() => {
+        // Reducer'a güncellencek veriyi ilet
+        dispatch(updateTodo(updatedTodo));
+        // Bildirim gönder
+        toast.success("Eleman başarıyla güncellendi");
+      })
+      .catch((err) => {
+        // Bildirim gönder
+        toast.success(
+          `Eleman güncelleneriken bir hata oluştu:  ${err.message}`
+        );
+      });
 
     // Modal'ı kapat
     onClose();
-
-    // Bildirim gönder
-    toast.success("Eleman başarıyla güncellendi");
   };
   return (
     <div className="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex justify-content-center align-items-center">
