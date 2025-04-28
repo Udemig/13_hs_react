@@ -7,11 +7,19 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { getRestaurants } from "./redux/actions/restaurantActions";
 import { useDispatch } from "react-redux";
+import { getBasket } from "./redux/actions/basketActions";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getRestaurants());
+    dispatch(
+      // Restaurant verilerini al
+      getRestaurants()
+    );
+    dispatch(
+      // Cart verilerini al
+      getBasket()
+    );
   }, []);
   return (
     <BrowserRouter>

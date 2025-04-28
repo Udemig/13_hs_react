@@ -32,7 +32,7 @@ const Card = ({ item }) => {
         <p className="text-sm my-3 text-gray-500">{item.minPrice} TL minimum</p>
 
         {/* Delivery Time && isDeliveryFree */}
-        <di className="flex  justify-between items-center">
+        <div className="flex  justify-between items-center">
           {/* Delivery Time */}
           <p className="flex items-center gap-2 font-semibold">
             <FaClock className="text-red-500" />
@@ -45,7 +45,7 @@ const Card = ({ item }) => {
               <span>Ücretsiz</span>
             </p>
           )}
-        </di>
+        </div>
       </div>
     </Link>
   );

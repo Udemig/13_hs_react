@@ -1,9 +1,17 @@
 import React from "react";
 import { BsBasket } from "react-icons/bs";
 import { IoRestaurant } from "react-icons/io5";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  // Store'a abone ol
+  const { restaurants } = useSelector((store) => store.restaurantReducer);
+  const { cart } = useSelector((store) => store.cartReducer);
+
+  // Sepetteki toplam ürün miktarını hesapla
+  const totalAmount = cart.reduce((total, i) => total + i.amount, 0);
+
   return (
     <header className="shadow">
       <div className="container flex justify-between items-center">
@@ -17,16 +25,17 @@ const Header = () => {
 
         <div className="flex gap-5">
           <Link to="/" className="flex items-center gap-1 hover:underline">
-            Yakınınızda 13 <IoRestaurant className="text-red-500" />{" "}
+            Yakınınızda {restaurants.length}
+            <IoRestaurant className="text-red-500" />
             <span className="max-md:hidden">Restoran var</span>
           </Link>
 
           <button className="button">Giriş Yap</button>
           <button className="button">Kayıt Ol</button>
 
-          <Link className="basket-button">
+          <Link to="/cart" className="basket-button">
             <BsBasket />
-            <span>10</span>
+            <span>{totalAmount}</span>
           </Link>
         </div>
       </div>
