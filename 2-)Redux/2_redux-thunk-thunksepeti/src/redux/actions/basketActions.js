@@ -41,12 +41,11 @@ const addItem = (product) => {
         dispatch({ type: actionTypes.addItem, payload: newItem });
       })
       .catch((err) => {
-        toast.error(
-          `Sepete eleman eklenirken bir hata oluştu: ${err.message} `
-        );
+        toast.error(`Sepete eleman eklenirken bir hata oluştu: ${err.message} `);
       });
   };
 };
+
 // Sepetteki  ürünleri güncelleyen fonksiyon
 const updateItem = (id, newAmount) => {
   return async (dispatch) => {
@@ -55,12 +54,18 @@ const updateItem = (id, newAmount) => {
       .then((res) => {
         dispatch({ type: actionTypes.updateItem, payload: res.data });
       })
-      .catch((err) =>
-        toast.error(
-          `Sepetteki ürün miktarı güncellenirken bir hata oluştu:${err.message}`
-        )
-      );
+      .catch((err) => toast.error(`Sepetteki ürün miktarı güncellenirken bir hata oluştu:${err.message}`));
   };
 };
 
-export { getBasket, addItem, updateItem };
+// Ürünü sepetten kaldıran fonksiyon (thunk aksiyonu)
+const deleteItem = (id) => {
+  return async (dispatch) => {
+    api
+      .delete(`/cart/${id}`)
+      .then(() => dispatch({ type: actionTypes.deleteItem, payload: id }))
+      .catch((err) => toast.error("Bir sorun oluştu"));
+  };
+};
+
+export { getBasket, addItem, updateItem, deleteItem };

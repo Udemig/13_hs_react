@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div>
-      <h1>Footer</h1>
+    <div className="text-center my-10 text-zinc-700">
+      <h1>Tüm Hakları Saklıdır &#169; ThunkSepeti</h1>
     </div>
   );
 };

@@ -30,14 +30,14 @@ const cartReducer = (state = initialState, action) => {
 
     // Eleman Ekleme Durumu
     case actionTypes.updateItem:
-      const updatedCart = state.cart.map((item) =>
-        item.id === action.payload.id ? action.payload : item
-      );
+      const updatedCart = state.cart.map((item) => (item.id === action.payload.id ? action.payload : item));
       return { ...state, cart: updatedCart };
 
     // Eleman Silme Durumu
     case actionTypes.deleteItem:
-      return state;
+      const filtred = state.cart.filter((item) => item.id !== action.payload);
+
+      return { ...state, cart: filtred };
 
     default:
       return state;

@@ -14,9 +14,7 @@ const Card = ({ item }) => {
 
   const handleAdd = (e) => {
     e.preventDefault();
-    found
-      ? dispatch(updateItem(found.id, found.amount + 1))
-      : dispatch(addItem(item));
+    found ? dispatch(updateItem(found.id, found.amount + 1)) : dispatch(addItem(item));
   };
 
   return (
@@ -28,17 +26,11 @@ const Card = ({ item }) => {
           <p className="my-1.5 text-gray-500">{item.title}</p>
         </div>
         {/* Price */}
-        <p className="text-lg font-semibold">
-          {(item.price * 10).toFixed(2)} TL
-        </p>
+        <p className="text-lg font-semibold">{(item.price * 10).toFixed(2)} TL</p>
       </div>
 
       <div className="relative">
-        <img
-          className="rounded-md object-cover size-full"
-          src={item.photo}
-          alt="product-image"
-        />
+        <img className="rounded-md object-cover size-full" src={item.photo} alt="product-image" />
 
         <button
           type="button"
