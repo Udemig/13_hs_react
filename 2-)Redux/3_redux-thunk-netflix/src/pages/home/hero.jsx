@@ -3,10 +3,10 @@ import api from "../../utils/api";
 import Loader from "../../components/loader/index";
 import { FaPlay } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { BsBookmarkPlusFill } from "react-icons/bs";
 import { baseImgUrl } from "../../utils/constants";
 import { MdImageNotSupported } from "react-icons/md";
 import Error from "../../components/error/index";
+import Button from "../../components/button";
 
 const Hero = () => {
   const [movie, setMovie] = useState();
@@ -46,10 +46,7 @@ const Hero = () => {
             <span>Filmi İzle</span>
           </Link>
 
-          <button className="hero-btn bg-blue-500">
-            <BsBookmarkPlusFill />
-            <span>Listeye Ekle</span>
-          </button>
+          <Button movie={movie} />
         </div>
       </div>
 

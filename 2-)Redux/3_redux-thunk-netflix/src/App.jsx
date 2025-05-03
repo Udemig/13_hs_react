@@ -4,8 +4,17 @@ import Detail from "./pages/detail";
 import WatchList from "./pages/watch-list";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getWatchList } from "./redux/actions";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getWatchList());
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="flex flex-col h-screen p-5 md:p-10 lg:px-15 xl:px-20">
