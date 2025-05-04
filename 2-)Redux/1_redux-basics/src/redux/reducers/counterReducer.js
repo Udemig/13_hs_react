@@ -1,6 +1,8 @@
 const initialState = {
   count: 0,
   name: "Samet",
+  surname: "Samet",
+  age: "Samet",
 };
 
 const counterReducer = (state = initialState, action) => {
