@@ -1,0 +1,53 @@
+// module.css / module.scss yaklaşımdında class'lar oluşturduktan sonra
+// bu class'ları kullanmak için scss dosyasını component'a import ederiz
+// bu noktada otomatik olarka bir styles nesnesi oluşur
+// bu styles nesne aracılığı class'lara atanmış olan rastgele isimleri kullanırız
+// bu sayede bu class sadece bu component özel olur farklı bir componnet'da aynı class ismi kullandılığında çakışma yaşanmaz
+// module css yaklaşımında class'larda özel karakter kullanmayız genelde camelCase tercih ederiz
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #171717;
+  padding: 5px 20px 0 20px;
+
+  @media (min-width: 900px) {
+    padding: 10px 20px 0 20px;
+    a {
+      padding: 25px 0 !important;
+    }
+
+    div img {
+      width: 50px !important;
+    }
+  }
+
+  @media (max-width: 900px) {
+    h2 {
+      display: none;
+    }
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    img {
+      width: 40px;
+    }
+  }
+
+  nav {
+    display: flex;
+    gap: 20px;
+    a {
+      padding: 15px 0;
+      color: rgba(255, 255, 255, 0.725);
+    }
+  }
+}
+
+.active {
+  color: white !important;
+  border-bottom: 1px solid #2e8bca;
+}
