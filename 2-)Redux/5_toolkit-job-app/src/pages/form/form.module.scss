@@ -1,0 +1,54 @@
+.formPage {
+  min-height: 90vh;
+  display: grid;
+  place-items: center;
+
+  section {
+    width: 70vw;
+    max-width: 600px;
+    box-shadow: 0 0 55px #2e8cca79;
+    padding: 25px;
+    margin-top: 20px;
+    @media (max-width: 600px) {
+      width: 80vw;
+    }
+
+    form {
+      display: grid;
+      gap: 25px;
+      margin-top: 20px;
+    }
+  }
+}
+
+.btnWrapper {
+  display: flex;
+  margin-top: 20px;
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #2e8cca;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+
+    &:hover {
+      box-shadow: 0 10px 15px -3px #488aec31, 0 4px 6px -2px #488aec17;
+    }
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+
+  input,
+  select {
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-top: 5px;
+  }
+}

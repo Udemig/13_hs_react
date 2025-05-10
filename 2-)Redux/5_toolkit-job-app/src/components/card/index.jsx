@@ -5,6 +5,10 @@ import { FaCalendarAlt as Calendar, FaMapMarkerAlt as Marker } from "react-icons
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/tr";
+import api from "../../utils/api";
+import { useDispatch } from "react-redux";
+import { deleteJob } from "../../redux/slices/jobSlice";
+import { toast } from "react-toastify";
 
 // Plugin'i aktif et
 dayjs.extend(relativeTime);
@@ -13,12 +17,7 @@ dayjs.extend(relativeTime);
 dayjs.locale("tr");
 
 const Card = ({ job }) => {
-  /*
-    * Challange:
-    Eğer iş mülakat aşamasındaysa 12 Şubat 2025 * 12:00 yazmalı
-    Eğer iş devam ediyorsa 3 gün önce başvuruldu
-    Eğer reddedildi 12 Şubat 2025 tarihinde rededildi
-  */
+  const dispatch = useDispatch();
 
   const date =
     job.status === "Devam Ediyor"
@@ -26,6 +25,16 @@ const Card = ({ job }) => {
       : job.status === "Reddedildi"
       ? dayjs(job.rejection_date).format("DD-MMMM") + "'da rededildi"
       : dayjs(job.interview_date).format("DD-MM-YYYY HH:mm") + "'de mülakat";
+
+  const handleDelete = () => {
+    api
+      .delete(`/jobs/${job.id}`)
+      .then(() => {
+        dispatch(deleteJob(job.id));
+        toast.success("Başvuru silindi");
+      })
+      .catch(() => toast.error("Silme işlemi başarısız"));
+  };
 
   return (
     <div className={styles.card}>
@@ -47,7 +56,8 @@ const Card = ({ job }) => {
               <Edit />
             </button>
           </Link>
-          <button>
+
+          <button onClick={handleDelete}>
             <Delete />
           </button>
         </div>
