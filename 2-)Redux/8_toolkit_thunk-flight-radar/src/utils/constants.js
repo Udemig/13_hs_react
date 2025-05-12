@@ -1,14 +1,9 @@
 export const params = {
-  south: "34.458402",
-  west: "23.966069",
-  north: "43.56377",
-  east: "46.8568",
+  bl_lat: "34.458402",
+  bl_lng: "23.966069",
+  tr_lat: "43.56377",
+  tr_lng: "46.8568",
   limit: "300",
-  speedRanges: "40,1960",
-  altitudeRanges: "10,48000",
-  dataSource: "ADSB,MLAT,FLARM,FAA,SATELLITE,UAT,SPIDERTRACKS,AUS,OTHER_DATA_SOURCE,ESTIMATED",
-  service:
-    "PASSENGER,CARGO,MILITARY_AND_GOVERNMENT,BUSINESS_JETS,GENERAL_AVIATION,HELICOPTERS,LIGHTER_THAN_AIR,DRONES,OTHER_SERVICE,NON_CATEGORIZED,GLIDERS,GROUND_VEHICLES",
-  trafficType: "ALL",
-  stats: "true",
+  speed: "40,1960",
+  altitude: "10,48000",
 };

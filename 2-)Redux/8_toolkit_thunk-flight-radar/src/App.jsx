@@ -5,6 +5,7 @@ import Header from "./components/header/index";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getFlights } from "./redux/actions";
+import Modal from "./components/modal";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,8 @@ const App = () => {
           <Route path="/" element={<Map />} />
           <Route path="/list" element={<List />} />
         </Routes>
+
+        <Modal />
       </main>
     </BrowserRouter>
   );
