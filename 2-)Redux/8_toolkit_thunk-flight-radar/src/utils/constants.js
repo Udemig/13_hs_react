@@ -7,3 +7,5 @@ export const params = {
   speed: "40,1960",
   altitude: "10,48000",
 };
+
+export const mockArr = new Array(14).fill("");
