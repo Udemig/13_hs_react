@@ -88,7 +88,7 @@ const List = ({ room }) => {
     setIsAtBottom(scrollTop + clientHeight >= scrollHeight - 150);
   };
 
-  //TODO: bildirim sesini oynat
+  // bildirim sesini oynat
   const playSound = () => {
     audioRef.current.currentTime = 0;
     audioRef.current.play();
