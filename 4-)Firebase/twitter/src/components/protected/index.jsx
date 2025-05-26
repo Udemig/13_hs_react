@@ -4,6 +4,7 @@ import { Outlet, Navigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import Loader from "../loader";
 import { toast } from "react-toastify";
+import PageLoader from "../loader/page-loader";
 
 const Protected = () => {
   // oturumu açık kullanıcnın state'i
@@ -19,7 +20,7 @@ const Protected = () => {
   }, []);
 
   // oturum verileri gelene kadar ekrana loader bas
-  if (user === undefined) return <Loader />;
+  if (user === undefined) return <PageLoader />;
 
   // kullanıcının oturumu kapalıysa logine yönlendir
   if (user === null || user?.emailVerified == false) {
@@ -31,7 +32,7 @@ const Protected = () => {
 
   // kullanıncın oturumu açıksa sayfayı göster
   // Outlet: Kapsayıcı route içerisinde alt route'un elementini ekrana basmaya yarar
-  return <Outlet />;
+  return <Outlet context={user} />;
 };
 
 export default Protected;

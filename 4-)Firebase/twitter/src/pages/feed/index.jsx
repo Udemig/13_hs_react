@@ -1,14 +1,17 @@
-import { signOut } from "firebase/auth";
-import { auth } from "../../firebase/index";
-import { toast } from "react-toastify";
+import { useOutletContext } from "react-router-dom";
+import Nav from "./nav";
+import Main from "./main";
+import Aside from "./aside";
 
 const Feed = () => {
-  console.log("Oturumu Açık Kullanıcı:", auth.currentUser);
-  return (
-    <div className="m-20 text-5xl text-center">
-      <h1 className="mb-20">AKIŞ SAYFASI</h1>
+  // useOutletContext: outlet componentına gönderilen context propuna erişmeye yarar
+  const user = useOutletContext();
 
-      <button onClick={() => signOut(auth).then(() => toast.info("Çıkış Yapıldı"))}>Çıkış Yap</button>
+  return (
+    <div className="h-screen bg-primary overflow-hidden text-secondary grid grid-cols-[1fr_minmax(300px,600px)_1fr]">
+      <Nav user={user} />
+      <Main user={user} />
+      <Aside />
     </div>
   );
 };

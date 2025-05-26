@@ -12,10 +12,9 @@ const App = () => {
         {/* Bu route grubuna sadece oturumu açıklar girebilir */}
         <Route element={<Protected />}>
           <Route path="/feed" element={<Feed />} />
-          <Route path="/feed1" element={<Feed />} />
-          <Route path="/feed2" element={<Feed />} />
-          <Route path="/feed3" element={<Feed />} />
-          <Route path="/feed4" element={<Feed />} />
+          <Route path="/profile" element={<h1>Profil Sayfası</h1>} />
+          <Route path="/setting" element={<h1>Ayarlar Sayfası</h1>} />
+          <Route path="/messages" element={<h1>Mesalar Sayfası</h1>} />
         </Route>
       </Routes>
     </BrowserRouter>
