@@ -26,9 +26,11 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   min-height: 100vh;
+  padding: 30px;
 }
 
 h1 {
@@ -46,6 +48,9 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  min-width: 200px;
+  font-size: 20px;
+  text-shadow: 0 0 10px black;
 }
 button:hover {
   border-color: #646cff;
@@ -65,5 +70,41 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  margin: 100px 0;
+  gap: 20px;
+
+  p {
+    font-size: 30px;
+  }
+}
+
+.accordion {
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  button {
+    padding: 5px 10px;
+    font-size: 17px;
+  }
+
+  p {
+    font-size: 19px;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .hide {
+    display: none;
   }
 }
