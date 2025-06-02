@@ -65,9 +65,56 @@ describe("statics component testleri", () => {
 # Mock
 
 - Test yazarken sürekli olarak karşınızıa çıkıcak bir terim.
-- Bir değişkenin veya fonksiyonun sahte bir, versiyonun oluşturur. Yani orjinal fonksiyonu taklit eder diyebiliriz.
+- Bir değişkenin veya fonksiyonun sahte bir versiyonun oluşturur. Yani orjinal fonksiyonu taklit eder diyebiliriz.
 - Mock fonksiyonlarının bize sağladıkları:
 - - çağrıldığında hangi değeri döndürüceğini biz belirleyebiliryruz
 - - fonksiyon çağrıldı mı kontrolü yapabiliyoruz
 - - fonksiyon doğru parametreleri aldı mı kontrolü yapabiliyoruz
 - - fonksiyon doğru değeri return ettimi kontrolü yapabiliyorusz
+
+# Yazı İçiriğni Kontrol Etme
+
+1. önce elementi seçip ardından yazı içierği ekranda var mı diye kontrol edilebilir
+
+2. elementi seçerken yazısına göre seçersek zaten element ekranda olmayınca hata vericeği için expecte gerek kalmaz
+
+```js
+// 1-Yol) ülke ismi ekranda mı
+const h1 = screen.getByRole("heading");
+expect(h1).toHaveTextContent(mockDetailData.country);
+
+// 2-Yol) ülke ismi ekranda mı
+screen.getByRole("heading", { name: mockDetailData.country });
+```
+
+# Selector Anatomisi
+
+- Selector, ekrandaki elementleri almak için kullandığımız methodlardır.
+- Seçiciler 3 ana parçadan oluşur.
+
+1. Yöntem:
+
+- Get: Ekradaki elementi alamazsa hata fırlatır
+  Bir elementin ekranda olduğunu kontrol etmek istediğimiz zaman get kullanrız.
+- Query: Ekrandaki elementi alamazsa hata vermez sadece null döndürür
+  Bir elementin ekranda olmadığını kontrol etmek istediğimiz zaman query kullanrız.
+- Find: Ekrana asenkron olarak basılan elementleri seçemek için kullanılır
+  Eğer api isteğini mock'lamadıysak, api isteği sonrasında ekrana basılan elementleri seçmek için kullanırız.
+
+2. All İfadesi:
+
+- Eğerki ekrandan aynı koşula uyan birden fazla element almak istiyorsak kullandığımız yöntemin devamına ekleriz.
+- All ifadesi kullanrsak dönen cevap her zaman dizi içerisinde olur
+- getAllBy | queryAllBy | findAllBy
+- - örn: ekrandaki bütün butonları almak isteidğimiz seneryoda `getAllByRole("button")` kullanbiliriz
+
+3. Sorgu Methodu:
+
+- Hangi yöntemle elementi seçiceğimi belirleynm method:
+- ByRole
+- ByLabelText
+- ByText
+- ByDisplayValue
+- ByAltText
+- ByTitle
+- ByTestId
