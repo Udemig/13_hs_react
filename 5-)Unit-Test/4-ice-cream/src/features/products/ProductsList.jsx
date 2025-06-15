@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   FaIceCream,
@@ -12,9 +12,14 @@ import ProductCard from "../../components/ProductCard";
 
 const ProductsList = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.items);
-  const productStatus = useSelector((state) => state.products.status);
-  const error = useSelector((state) => state.products.error);
+
+  const {
+    items: products,
+    status: productStatus,
+    error,
+  } = useSelector((store) => store.products);
+
+  console.log(products);
 
   useEffect(() => {
     if (productStatus === "idle") {
@@ -25,7 +30,7 @@ const ProductsList = () => {
   let content;
 
   if (productStatus === "loading") {
-    content = <p>Yükleniyor...</p>;
+    content = <p data-testid="loading-message">Yükleniyor...</p>;
   } else if (productStatus === "succeeded") {
     content = (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -35,7 +40,7 @@ const ProductsList = () => {
       </div>
     );
   } else if (productStatus === "failed") {
-    content = <p>{error}</p>;
+    content = <p data-testid="error-message">{error}</p>;
   }
 
   const categoryIcons = [

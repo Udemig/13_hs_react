@@ -34,11 +34,18 @@ const Cart = () => {
   const total = subtotal + shipping;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
+    <div
+      data-testid="cart-modal"
+      className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end"
+    >
       <div className="bg-white h-full w-full max-w-lg p-6 flex flex-col">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Sipariş</h2>
-          <button onClick={handleCloseCart} className="text-2xl">
+          <button
+            data-testid="close-btn"
+            onClick={handleCloseCart}
+            className="text-2xl"
+          >
             <IoMdClose />
           </button>
         </div>
@@ -86,6 +93,7 @@ const Cart = () => {
                     ₺{item.price * item.quantity}
                   </p>
                   <button
+                    data-testid="remove-btn"
                     onClick={() => handleRemoveFromCart(item.id)}
                     className="text-red-500 hover:text-red-700 text-xl"
                   >

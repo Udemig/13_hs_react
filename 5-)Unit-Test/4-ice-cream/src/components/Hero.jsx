@@ -4,9 +4,9 @@ import { FaStar } from "react-icons/fa";
 
 const Hero = () => {
   return (
-    <div className="p-4 md:p-8 flex flex-col md:flex-row justify-between items-center gap-8">
-      <div className="max-w-2xl text-center md:text-left">
-        <h1 className="text-6xl md:text-8xl font-bold">
+    <div className="p-4 md:p-8 flex flex-col lg:flex-row justify-between items-center gap-8">
+      <div className="max-w-2xl text-center lg:text-left">
+        <h1 className="text-6xl lg:text-8xl font-bold">
           Karadutlu
           <br />
           Dondurma
