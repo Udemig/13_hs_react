@@ -8,6 +8,7 @@ import {
 } from "./cartSlice";
 import { IoMdClose } from "react-icons/io";
 import { FiTrash2 } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Cart = () => {
     dispatch(clearCart());
     dispatch(toggleCart());
     // In a real app, you'd show a success message (e.g., toast)
-    alert("Siparişiniz başarıyla alındı!");
+    toast.success("Siparişiniz başarıyla alındı!");
   };
 
   const subtotal = items.reduce(

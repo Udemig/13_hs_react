@@ -9,6 +9,7 @@ import {
   updateQuantity,
   removeFromCart,
   toggleCart,
+  clearCart,
 } from "../features/cart/cartSlice";
 
 // gerekli aksiyonları mock'la
@@ -203,8 +204,48 @@ describe("Cart Component Testleri", () => {
     });
   });
 
-  // TODO
-  test("Ara Toplam, Kargo ve Toplam fiyatlar görüntülenir", () => {});
+  test("Ara Toplam, Kargo ve Toplam fiyatlar görüntülenir", () => {
+    const store = createMockStore({
+      cart: {
+        isCartOpen: true,
+        items: mockCartItems,
+      },
+    });
 
-  test("Sipariş ver butonuna tıklanınca sepet temizlenir", () => {});
+    render(
+      <Provider store={store}>
+        <Cart />
+      </Provider>
+    );
+
+    screen.getByText(/85/); // ara toplam
+    screen.getByText(/20/); // kargo
+    screen.getByText(/105/); // toplam fiyat
+  });
+
+  test("Sipariş ver butonuna tıklanınca sepet temizlenir", async () => {
+    const user = userEvent.setup();
+
+    const store = createMockStore({
+      cart: {
+        isCartOpen: true,
+        items: mockCartItems,
+      },
+    });
+
+    render(
+      <Provider store={store}>
+        <Cart />
+      </Provider>
+    );
+
+    // sipariş ver butonunu al
+    const orderBtn = screen.getByRole("button", { name: "Sipariş Ver" });
+
+    // sipraiş ver butonuna tıkla
+    await user.click(orderBtn);
+
+    // sepetin temizlenmesi ve modal kapatma aksiyonları tetiklenmiştir
+    expect(store.getActions()).toEqual([clearCart(), toggleCart()]);
+  });
 });

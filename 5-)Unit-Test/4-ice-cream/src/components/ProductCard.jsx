@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../features/cart/cartSlice";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ product }) => {
   const [selectedFormat, setSelectedFormat] = useState(null);
@@ -12,6 +13,7 @@ const ProductCard = ({ product }) => {
 
     dispatch(addToCart({ id, name, price, image, format: selectedFormat }));
     setSelectedFormat(null);
+    toast.success("Ürün sepete eklendi!");
   };
 
   return (
