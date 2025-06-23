@@ -40,4 +40,4 @@ const kisi: IUser = {
 type Dizi = number[];
 type Fonksiyon = (a: number, b: number) => number;
 type Literal = "a" | "b" | "c";
-interface IDizi {}
+interface INesne {}
