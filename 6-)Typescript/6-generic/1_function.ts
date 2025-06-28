@@ -1,6 +1,6 @@
 /*
  ! Generic
- * Bir fonksiton'un, type'ın, class'ın, interface'in içerisindeki bazı tipleri dinamik olarak dışarıdan gelen değere bağlı değişmesini sağlar.
+ * Bir fonksiyon'un, type'ın, class'ın, interface'in içerisindeki bazı tipleri dinamik olarak dışarıdan gelen değere bağlı değişmesini sağlar.
  * Bu durumda generic özelliğini kullanarak dışarıdan parametre olarak tip alabiliyoruz
 */
 
@@ -35,11 +35,11 @@ const getRandomElement2 = <TypeParam>(array: TypeParam[]): TypeParam => {
 };
 
 // Generic değer alan bir fonksiyonu kullanırken generic tipi belirtmek için <> içerisinde tipi gönderiyoruz
-const x = getRandomElement2<number>([1, 2, 3, 4, 5]);
-const y = getRandomElement2<string>(["a", "b", "c", "d", "e"]);
+const x1 = getRandomElement2<number>([1, 2, 3, 4, 5]);
+const y1 = getRandomElement2<string>(["a", "b", "c", "d", "e"]);
 
-console.log(x);
-console.log(y);
+console.log(x1);
+console.log(y1);
 
 /*
  * React projesinde:
