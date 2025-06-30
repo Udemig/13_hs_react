@@ -4,22 +4,29 @@ import type { Car } from "../../types";
 import Card from "./card";
 import Warning from "./warning";
 import Loader from "../loader";
+import { useSearchParams } from "react-router-dom";
 
 const List: FC = () => {
+  const [searchParams] = useSearchParams();
   const [cars, setCars] = useState<Car[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
+  // url'deki arama parametrelerin eriş
+  const make = searchParams.get("make") || "";
+  const model = searchParams.get("model") || "";
+  const year = searchParams.get("year") || "";
 
   // liste component'ı render olunca
   useEffect(() => {
     setLoading(true);
 
     // araç verilerini al
-    fetchCars()
+    fetchCars(make, model, year)
       .then((data) => setCars(data.results))
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [make, model, year]);
 
   if (loading)
     return (

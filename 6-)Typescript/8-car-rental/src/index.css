@@ -96,7 +96,7 @@
 
   /* Modern Hero Section */
   .hero {
-    @apply flex xl:flex-row flex-col gap-8 relative z-0 max-w-[1440px] mx-auto min-h-screen items-center;
+    @apply flex xl:flex-row flex-col gap-8 relative z-0 max-w-[1440px] mx-auto items-center;
   }
 
   .hero-title {

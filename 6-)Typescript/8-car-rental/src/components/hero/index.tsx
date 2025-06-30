@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 const Hero: FC = () => {
   return (
     <div className="hero padding-x padding-y">
-      <div className="pt-20 flex-1 max-h-[920px]">
+      <div className="pt-20 xl:flex-1 max-h-[920px]">
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
