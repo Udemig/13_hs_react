@@ -6,6 +6,7 @@ import Warning from "./warning";
 import Loader from "../loader";
 import { useSearchParams } from "react-router-dom";
 import ReactPaginate from "react-paginate";
+import { ul } from "motion/react-client";
 
 const List: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -56,24 +57,26 @@ const List: FC = () => {
       </section>
 
       {totalCount && (
-        <ReactPaginate
-          breakLabel="..."
-          className="pagination"
-          nextLabel=">"
-          previousLabel="<"
-          initialPage={Number(page) - 1}
-          onPageChange={(e) => {
-            searchParams.set("page", String(e.selected + 1));
-            setSearchParams(searchParams);
+        <ul>
+          <ReactPaginate
+            breakLabel="..."
+            className="pagination"
+            nextLabel=">"
+            previousLabel="<"
+            initialPage={Number(page) - 1}
+            onPageChange={(e) => {
+              searchParams.set("page", String(e.selected + 1));
+              setSearchParams(searchParams);
 
-            if (firstCard.current && page !== "1") {
-              firstCard.current.scrollIntoView();
-            }
-          }}
-          pageRangeDisplayed={5}
-          pageCount={Math.ceil(totalCount / 10)}
-          renderOnZeroPageCount={null}
-        />
+              if (firstCard.current && page !== "1") {
+                firstCard.current.scrollIntoView();
+              }
+            }}
+            pageRangeDisplayed={5}
+            pageCount={Math.ceil(totalCount / 10)}
+            renderOnZeroPageCount={null}
+          />
+        </ul>
       )}
     </div>
   );

@@ -36,10 +36,7 @@ const Modal: FC<Props> = ({ isOpen, close, car }) => {
             }}
             className="car-details-dialog-panel w-[95%] sm:min-w-[600px] min-h-[70vh]"
           >
-            <button
-              onClick={close}
-              className="car-details-close-btn cursor-pointer"
-            >
+            <button name="modal'ı kapat" onClick={close} className="car-details-close-btn cursor-pointer">
               X
             </button>
 

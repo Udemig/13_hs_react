@@ -3,9 +3,7 @@ import { useSearchParams } from "react-router-dom";
 
 const Year: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [year, setYear] = useState<string | null>(
-    searchParams.get("year") || null
-  );
+  const [year, setYear] = useState<string | null>(searchParams.get("year") || null);
 
   // form gönderilince
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -35,10 +33,11 @@ const Year: FC = () => {
         />
 
         <button
+          name="ara"
           type="submit"
           className="h-[52px] px-4 glass-efect border-l-0 rounded-r-2xl border border-white/20 text-white placeholder-grey-light outline-none focus:border-primary-blue/50 focus:bg-white/10 transition-all duration-300 cursor-pointer hover:bg-primary-blue/20 hover:scale-105"
         >
-          <img src="/search.svg" className="size-5 invert" />
+          <img src="/search.svg" className="size-5 invert" alt="ara" />
         </button>
       </div>
     </form>
