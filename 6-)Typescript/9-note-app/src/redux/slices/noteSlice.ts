@@ -30,9 +30,21 @@ const noteSlice = createSlice({
       },
     },
 
-    updateNote: (state, action: PayloadAction<Note>) => {},
+    deleteNote: (state, action: PayloadAction<string>) => {
+      state.notes = state.notes.filter((note) => note.id !== action.payload);
+    },
 
-    deleteNote: (state, action: PayloadAction<string>) => {},
+    updateNote: (state, action: PayloadAction<Note>) => {
+      // güncellenicek notun index'ini bul
+      const index = state.notes.findIndex(
+        (note) => note.id === action.payload.id
+      );
+
+      // eğer not bulunduysa güncelle
+      if (index !== -1) {
+        state.notes[index] = action.payload;
+      }
+    },
   },
 });
 

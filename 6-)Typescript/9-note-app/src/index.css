@@ -150,7 +150,7 @@ body {
 }
 
 .prose pre {
-  background-color: theme(--color-card);
+  background-color: theme(--color-background);
   padding: 1rem;
   border-radius: theme(--radius-md);
   overflow-x: auto;
@@ -167,4 +167,10 @@ body {
 .card:hover {
   box-shadow: theme(--shadow-lg);
   transform: translateY(-2px);
+}
+
+@layer base {
+  button {
+    @apply cursor-pointer;
+  }
 }

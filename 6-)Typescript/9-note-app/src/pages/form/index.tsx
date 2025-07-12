@@ -7,12 +7,13 @@ import { mdOptions } from "../../utils/constants";
 import ReactMarkdown from "react-markdown";
 import ReactSelect from "react-select/creatable";
 import { selectStyles } from "../../utils/constants";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { createNote } from "../../redux/slices/noteSlice";
+import { createNote, updateNote } from "../../redux/slices/noteSlice";
 import { toast } from "react-toastify";
 
 const Form: FC = () => {
+  const { id } = useParams<{ id: string }>();
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -22,19 +23,41 @@ const Form: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  // düzenleme mi yoksa oluşturma modu mu?
+  const isEditMode = Boolean(id);
+
+  // düzenleme modundaysak state'leri doldur
+  useEffect(() => {
+    if (id) {
+      const note = notes.find((note) => note.id === id);
+      if (note) {
+        setTitle(note.title);
+        setContent(note.content);
+        setSelectedTags(note.tags);
+      }
+    } else {
+      setTitle("");
+      setContent("");
+      setSelectedTags([]);
+    }
+  }, [id, notes]);
+
   // tüm notların etiketlerini çıkart
   useEffect(() => {
     setAvailableTags([...new Set(notes.map((note) => note.tags).flat())]);
   }, [notes]);
 
+  // form gönderildiğinde
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // store'a yeni not ekleme aksiyonunu dispatch et
-    dispatch(createNote(title, content, selectedTags));
-
-    // bildirim göster
-    toast.success("Not başarıyla oluşturuldu");
+    if (id) {
+      dispatch(updateNote({ id, title, content, tags: selectedTags }));
+      toast.success("Not başarıyla güncellendi");
+    } else {
+      dispatch(createNote(title, content, selectedTags));
+      toast.success("Not başarıyla oluşturuldu");
+    }
 
     // anasayfaya yönlendir
     navigate("/");
@@ -46,7 +69,7 @@ const Form: FC = () => {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-text-primary">
-            Yeni Not Oluştur
+            {isEditMode ? "Notu Düzenle" : "Yeni Not Oluştur"}
           </h1>
           <p className="text-text-secondary">
             Fikirlerinizi ve notlarınızı kaydedin

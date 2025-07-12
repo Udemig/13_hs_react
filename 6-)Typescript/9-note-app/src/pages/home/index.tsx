@@ -10,7 +10,6 @@ const Home: FC = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const { notes } = useAppSelector((state) => state.notes);
 
-  // todo filtrelemeyi tekrar açıkla
   // seçili title ve selectedTags değerine göre notları filtrele
   const filteredNotes = useMemo(() => {
     return notes.filter((note) => {
@@ -38,7 +37,7 @@ const Home: FC = () => {
         setSelectedTags={setSelectedTags}
       />
       <List notes={filteredNotes} />
-      <Total />
+      <Total notes={notes} filteredNotes={filteredNotes} />
     </>
   );
 };
