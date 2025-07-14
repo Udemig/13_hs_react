@@ -14,7 +14,7 @@ const App: FC = () => {
         <main className="flex-1 container my-5">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/detail/:id" element={<DetailPage />} />
+            <Route path="/places/:id" element={<DetailPage />} />
             <Route path="/admin/create" element={<CreatePage />} />
           </Routes>
         </main>
