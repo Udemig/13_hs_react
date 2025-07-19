@@ -10,8 +10,10 @@ const Header: FC = () => {
         <Menu />
       </button>
 
-      <nav className="hidden md:flex items-center gap-6 xl:gap-10 font-semibold">
-        <Link to="/">Yeni Gelenler 🔥</Link>
+      <nav className="hidden md:flex items-center gap-5 xl:gap-10 font-semibold">
+        <Link to="/" className="whitespace-nowrap">
+          Yeni Gelenler 🔥
+        </Link>
         <Link to="/">Erkek</Link>
         <Link to="/">Kadın</Link>
       </nav>

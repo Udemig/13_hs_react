@@ -21,16 +21,16 @@ const UserInfo: FC = () => {
         />
 
         {isOpen && user && (
-          <div className="absolute top-10 -left-26 bg-white shadow-lg rounded-md z-50 overflow-hidden border border-zinc-200">
+          <div className="absolute top-11 -left-28 bg-white shadow-lg rounded-md z-50 overflow-hidden border border-zinc-200">
             <button className="font-semibold header-button">
               <span>{user.firstName}</span>
               <span className="ms-1">{user.lastName}</span>
             </button>
 
             {user.role === "admin" && (
-              <Link to="/dashboard" className="header-button cursor-pointer">
-                <span>Admin Paneli</span>
-              </Link>
+              <button className="header-button cursor-pointer w-full">
+                <Link to="/dashboard">Admin Paneli</Link>
+              </button>
             )}
 
             <button
