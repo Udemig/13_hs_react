@@ -56,7 +56,7 @@ const Dashboard: FC = () => {
                 </td>
                 <td className="px-6 py-4">
                   <Link
-                    to={`/dasboard/edit/${shoe._id}`}
+                    to={`/dashboard/edit/${shoe._id}`}
                     className="text-blue-600 hover:underline"
                   >
                     Düzenle

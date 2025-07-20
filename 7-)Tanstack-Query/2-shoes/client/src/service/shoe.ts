@@ -20,11 +20,15 @@ const useShoes = () =>
     select: (res) => res.data,
   });
 
-const useShoe = (id: string) =>
+const useShoe = (id: string, cacheTime: number = 1000 * 60) =>
   useQuery({
-    queryKey: ["shoe"],
+    queryKey: ["shoe", id],
     queryFn: () => shoeService.getOne(id),
     select: (res) => res.data,
+    enabled: !!id,
+    // cache'de hiç tutulmasın
+    staleTime: cacheTime,
+    gcTime: cacheTime,
   });
 
 const useDeleteMutation = () => {
