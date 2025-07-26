@@ -1,4 +1,4 @@
-import delay from "@/utils/delay";
+import delay from "../../../utils/delay";
 
 const UsersPage = async () => {
   await delay(2000);

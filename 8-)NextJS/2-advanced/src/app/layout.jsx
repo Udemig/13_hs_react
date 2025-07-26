@@ -1,14 +1,22 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// remote font import
+import { Playwrite_AU_QLD } from "next/font/google";
+
+// local font import
+import LocalFont from "next/font/local";
+
+// remote font kurulum
+const playwrite = Playwrite_AU_QLD({
   subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-play",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+// local font kurulum
+const crack = LocalFont({
+  src: "../assets/Crackajack.ttf",
+  variable: "--font-crack",
 });
 
 export const metadata = {
@@ -19,9 +27,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`antialiased ${playwrite.variable} ${crack.variable}`}>
         <main className="p-20 text-4xl">{children}</main>
       </body>
     </html>
