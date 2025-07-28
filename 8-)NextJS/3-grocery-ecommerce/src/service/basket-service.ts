@@ -1,4 +1,9 @@
-import { CheckoutSingleItemResponse, GetCartResponse, Product } from "@/types";
+import {
+  CheckoutSingleItemResponse,
+  GetCartResponse,
+  GetOrdersResponse,
+  Product,
+} from "@/types";
 
 // temel api adresi
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -56,4 +61,82 @@ const checkoutSingleItem = async (
   return res.json();
 };
 
-export { getCart, addToBasket, checkoutSingleItem };
+// sepetteki bütün ürenler için satın alma url'i oluştur
+const checkoutAllItems = async (): CheckoutSingleItemResponse => {
+  const body = {
+    userId,
+    customerInfo: {
+      userId,
+      name: "Furkan Evin",
+      phone: "555 666 77 88",
+      deliveryAddress: "istanbul 123 sok. 456 apt. 789",
+      isDelivery: true,
+    },
+  };
+
+  const res = await fetch(`${BASE_URL}/api/checkout`, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.json();
+};
+
+// ürünün miktarını arttır / azalt
+const updateCartItem = async (groceryId: string, quantity: number) => {
+  const res = await fetch(`${BASE_URL}/api/cart/item`, {
+    method: "PUT",
+    body: JSON.stringify({ userId, groceryId, quantity }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.json();
+};
+
+// ürünü sepetten sil
+const deleteCartItem = async (groceryId: string) => {
+  const res = await fetch(
+    `${BASE_URL}/api/cart/item?userId=${userId}&groceryId=${groceryId}`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  return res.json();
+};
+
+// sepeti temizle
+const clearCart = async () => {
+  const res = await fetch(`${BASE_URL}/api/cart?userId=${userId}`, {
+    method: "DELETE",
+  });
+
+  return res.json();
+};
+
+// yapılan siparişleri al
+const getOrders = async (): GetOrdersResponse => {
+  const res = await fetch(`${BASE_URL}/api/orders?customer_id=${userId}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.json();
+};
+
+export {
+  getCart,
+  addToBasket,
+  checkoutSingleItem,
+  checkoutAllItems,
+  updateCartItem,
+  deleteCartItem,
+  clearCart,
+  getOrders,
+};

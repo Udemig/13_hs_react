@@ -1,4 +1,6 @@
 import CartItem from "@/components/cart/cart-item";
+import CartSummary from "@/components/cart/cart-summary";
+import ClearBtn from "@/components/cart/clear-btn";
 import EmptyCart from "@/components/cart/empty-cart";
 import { getCart } from "@/service/basket-service";
 import { FC } from "react";
@@ -18,9 +20,11 @@ const CartPage: FC = async () => {
         <div className="lg:w-2/3">
           <div className="bg-white rounded-lg shadow overflow-hidden mb-6">
             <div className="flex items-center justify-between p-4 border-b">
-              <h2>Sepetiniz ({cart.items.length})</h2>
+              <h2 className="text-lg font-semibold">
+                Sepetiniz ({cart.items.length})
+              </h2>
 
-              <button>Temizle</button>
+              <ClearBtn />
             </div>
 
             <ul>
@@ -31,8 +35,8 @@ const CartPage: FC = async () => {
           </div>
         </div>
 
-        <div>
-          <h1>Sipariş Özeti</h1>
+        <div className="lg:w-1/3">
+          <CartSummary cart={cart} />
         </div>
       </div>
     </div>

@@ -32,6 +32,23 @@ type Cart = {
   __v: number;
 };
 
+// Sipariş Tipi
+type Order = {
+  _id: string;
+  product: Product;
+  quantity: number;
+  money_spend: number;
+  currency: string;
+  customer_id: string;
+  customer_name: string;
+  customer_phone: string;
+  delivery_address: string;
+  is_delivery: boolean;
+  createdAt: string;
+  updatedAt: string;
+  __v: 0;
+};
+
 // API Cevap Tipleri
 type GetAllProductsResponse = Promise<{
   groceries: Product[];
@@ -49,11 +66,17 @@ type GetCartResponse = Promise<{
   cart: Cart;
 }>;
 
+type GetOrdersResponse = Promise<{
+  orders: Order[];
+}>;
+
 export type {
   GetAllProductsResponse,
   GetProductByIdResponse,
   CheckoutSingleItemResponse,
+  GetOrdersResponse,
   GetCartResponse,
   Product,
   Cart,
+  Order,
 };
