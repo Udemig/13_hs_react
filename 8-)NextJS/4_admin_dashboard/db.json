@@ -2,12 +2,12 @@
   "products": [
     {
       "id": "2",
-      "name": "Samsung Galaxy S26",
+      "name": "Samsung Galaxy S27",
       "brand": "Samsung",
-      "price": "4999.98",
-      "stock": "30",
-      "rating": "3.6",
-      "reviews_count": "85",
+      "price": 4999.98,
+      "stock": 30,
+      "rating": 3.6,
+      "reviews_count": 85,
       "category": "Electronics",
       "image_url": "https://images.samsung.com/tr/smartphones/galaxy-s25/buy/product_color_navy_plus_PC.png",
       "description": "6.6-inch display, Snapdragon 8 Gen 2, triple 50MP camera system."
@@ -16,7 +16,7 @@
       "id": "3",
       "name": "Sony WH-1000XM5 Headphones",
       "category": "Accessories",
-      "price": 249.99,
+      "price": 749.99,
       "stock": 40,
       "description": "Industry-leading noise cancellation, 30 hours battery life.",
       "image_url": "https://picsum.photos/seed/3/500/500",
@@ -109,28 +109,16 @@
       "reviews_count": 40
     },
     {
-      "id": "b4f6",
-      "name": "sad",
-      "brand": "sdafsad",
-      "price": "2",
-      "stock": "23",
-      "rating": "2",
-      "reviews_count": "3",
-      "category": "Shoes",
-      "image_url": "https://thermaltake-de-bhgycxg9djfgcmfn.a02.azurefd.net/media/catalog/product/cache/023a745bb14092c479b288481f91a1bd/g/m/gm-gce-32ceqb-us_03.jpg",
-      "description": "sdfsdf"
-    },
-    {
-      "id": "b101",
-      "name": "Klavye",
-      "brand": "Logitech",
-      "price": "8900",
-      "stock": "87",
-      "rating": "4.2",
-      "reviews_count": "76",
+      "id": "6960",
+      "name": "Şarj Aleti",
+      "brand": "Apple",
+      "price": 666,
+      "stock": 45,
+      "rating": 4,
+      "reviews_count": 451,
       "category": "Electronics",
-      "image_url": "https://m.media-amazon.com/images/I/61Nt8geXzWL._AC_UF1000,1000_QL80_.jpg",
-      "description": "bu kavye 128 rgba...."
+      "image_url": "data:image/jpeg;base64,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",
+      "description": "bu şarj aleti...."
     }
   ],
   "users": [

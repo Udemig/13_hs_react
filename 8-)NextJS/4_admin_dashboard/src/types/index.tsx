@@ -30,12 +30,26 @@ type ChartData = {
   datasets: {
     label: string;
     data: number[];
-    borderColor: string;
-    backgroundColor: string;
-    fill: boolean;
-    borderDash: number[];
-    tension: number;
+    borderColor: string | string[];
+    backgroundColor: string | string[];
+    fill?: boolean;
+    borderDash?: number[];
+    tension?: number;
+    borderWidth?: number;
   }[];
 };
 
-export type { NavItem, Order, ChartData };
+type Product = {
+  id: string;
+  name: string;
+  brand: string;
+  price: number;
+  stock: number;
+  rating: number;
+  reviews_count: number;
+  category: string;
+  image_url: string;
+  description: string;
+};
+
+export type { NavItem, Order, ChartData, Product };

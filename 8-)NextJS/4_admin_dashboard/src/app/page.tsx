@@ -19,7 +19,7 @@ const Home: FC = () => {
     <div className="page">
       <h1 className="title">Admin Paneli</h1>
 
-      <section className="grid lg:grid-cols-4 gap-5 my-10">
+      <section className="grid md:grid-cols-2  gap-5 my-10">
         {cards.map((i, key) => (
           <Card key={key} item={i} />
         ))}

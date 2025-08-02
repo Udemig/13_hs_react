@@ -1,12 +1,5 @@
 import { TiHome } from "react-icons/ti";
-import {
-  FaUsers,
-  FaHeart,
-  FaBox,
-  FaChartArea,
-  FaDiceD6,
-  FaCog,
-} from "react-icons/fa";
+import { FaUsers, FaHeart, FaBox, FaChartArea, FaDiceD6, FaCog } from "react-icons/fa";
 import { IoIosPricetags } from "react-icons/io";
 import { NavItem } from "@/types";
 
@@ -75,6 +68,7 @@ export const inputs = [
     label: "Stok",
     name: "stock",
     type: "number",
+    step: 1,
     min: 0,
     max: 1000000,
   },
@@ -92,6 +86,7 @@ export const inputs = [
     name: "reviews_count",
     type: "number",
     defaultValue: 0,
+    step: 1,
     min: 0,
     max: 1000000,
   },

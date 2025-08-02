@@ -4,18 +4,24 @@ import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 import LineGraph from "../graphics/line-graph";
 
-// TODO: apı'dan gelen veriye göre grafik oluşturulacak.
 const SalesChart: FC = async () => {
+  // api'dan sipariş verilerini al
   const orders = await getOrders();
 
-  const labels = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs"];
+  // tarih dizisini hazırla
+  const labels = orders.map((order) =>
+    new Date(order.order_date).toLocaleDateString("tr", {
+      day: "2-digit",
+      month: "short",
+    })
+  );
 
   const data = {
     labels,
     datasets: [
       {
         label: "Satışlar",
-        data: [1000, 2500, 200, 1200, 1500],
+        data: orders.map((product) => product.total_price),
         borderColor: "rgba(0,150,255,1)",
         backgroundColor: "rgba(0,150,255,0.5)",
         fill: true,
@@ -26,7 +32,7 @@ const SalesChart: FC = async () => {
   };
 
   return (
-    <div className="bg-white rounded-lg p-5 shadow-md">
+    <div className="bg-white rounded-lg p-5 shadow-md size-full pb-16">
       <h2 className="subtitle mb-5">Satışlar</h2>
 
       <LineGraph data={data} />
