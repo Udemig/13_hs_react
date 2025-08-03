@@ -4,6 +4,8 @@ import { FC } from "react";
 import Field from "./field";
 import ImagePreview from "./image-preview";
 import { createProduct, updateProduct } from "@/utils/service";
+import { redirect } from "next/navigation";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 // action anında kullanılacak fonksiyon
 // bu yöntem sayesinde client component yapmdan formu yönetebiliyoruz
@@ -44,8 +46,15 @@ const handleSubmit = async (formData: FormData) => {
       await createProduct(productData);
     }
 
-    //todo kullanıcıyı yönlendir
+    // kullanıcıyı yönlendir
+    redirect("/products");
   } catch (error) {
+    console.log(error);
+    // fırlatılan hata redirect kaynaklıysa  hatayı tekrar fırlatıyoruz (redirectin çalışması için)
+    if (isRedirectError(error)) {
+      throw error;
+    }
+
     throw new Error("Ürün oluşturma hatası");
   }
 };

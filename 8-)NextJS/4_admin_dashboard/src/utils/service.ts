@@ -1,6 +1,29 @@
-import { Order, Product } from "@/types";
+import { Order, Product, User } from "@/types";
 
 const API_URL = "http://localhost:3030";
+
+// kullanıcıyı sil
+const deleteUser = async (id: string): Promise<void> => {
+  const res = await fetch(`${API_URL}/users/${id}`, {
+    method: "DELETE",
+  });
+
+  return res.json();
+};
+
+// kullanıcıları getir
+const getUsers = async (): Promise<User[]> => {
+  const res = await fetch(`${API_URL}/users`);
+
+  return res.json();
+};
+
+// bir kullanıcıyı getir
+const getUser = async (id: string): Promise<User> => {
+  const res = await fetch(`${API_URL}/users/${id}`);
+
+  return res.json();
+};
 
 // bütün siparişleri getir
 const getOrders = async (): Promise<Order[]> => {
@@ -58,4 +81,14 @@ const updateProduct = async (id: string, product: Omit<Product, "id">): Promise<
   return res.json();
 };
 
-export { getOrders, getProducts, getProduct, deleteProduct, createProduct, updateProduct };
+export {
+  getOrders,
+  getProducts,
+  getProduct,
+  deleteProduct,
+  createProduct,
+  updateProduct,
+  getUsers,
+  getUser,
+  deleteUser,
+};
