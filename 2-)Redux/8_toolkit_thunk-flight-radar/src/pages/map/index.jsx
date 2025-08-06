@@ -12,13 +12,13 @@ const Map = () => {
   const { info, route } = useSelector((store) => store.details);
 
   // Gerçek Zamanlı Veri Akışı
-  useEffect(() => {
-    const id = setInterval(() => {
-      dispatch(getFlights());
-    }, 3000);
+  // useEffect(() => {
+  //   const id = setInterval(() => {
+  //     dispatch(getFlights());
+  //   }, 3000);
 
-    return () => clearInterval(id);
-  }, []);
+  //   return () => clearInterval(id);
+  // }, []);
 
   return (
     <MapContainer center={[38.924182, 35.41414]} zoom={6} scrollWheelZoom={true}>
